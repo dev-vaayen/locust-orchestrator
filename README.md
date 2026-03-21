@@ -3,6 +3,8 @@
 # Locust Orchestrator by Dev_Vaayen  
 </div>
 
+<img src="https://i.imgur.com/ny6fHGU.png">
+
 A simple python based orchestrator for Locust that allows you to input an exhaustive load-test plan and executes it sequentially one by one, while saving all of the reports in your machine, locally.
 
 ## Storytime
