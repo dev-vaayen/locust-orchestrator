@@ -147,7 +147,7 @@ def describe_row(index: int, total: int, row: dict) -> str:
         f"spawn_rate={bold(row['spawn_rate'])}/s  "
         f"duration={bold(row.get('duration','5m'))}"
         f"{tag_str}"
-        + (f"  — {dim(desc)}" if desc else "")
+        + (f"  - {dim(desc)}" if desc else "")
     )
 
 
@@ -180,8 +180,8 @@ def run_step(
     # show what we're about to do
     log_header("-" * 60)
     log_info(describe_row(index, total, row))
-    log_info(f"Report  → {report_path.name}")
-    log_info(f"Command → {' '.join(cmd)}")
+    log_info(f"Report  -> {report_path.name}")
+    log_info(f"Command -> {' '.join(cmd)}")
     log_header("-" * 60)
 
     # create a result dictionary with all the info about this step
@@ -204,7 +204,7 @@ def run_step(
 
     # if it's just a dry run, don't actually run anything
     if dry_run:
-        log_warn("DRY RUN — skipping execution.")
+        log_warn("DRY RUN - skipping execution.")
         result["status"] = "dry_run"
         return result
 
@@ -226,7 +226,7 @@ def run_step(
         return result
     except KeyboardInterrupt:
         # user pressed Ctrl+C
-        log_warn("Interrupted by user — stopping orchestrator.")
+        log_warn("Interrupted by user - stopping orchestrator.")
         result["status"]      = "interrupted"
         result["finished_at"] = datetime.now().isoformat()
         result["elapsed_s"]   = (datetime.now() - started).total_seconds()
@@ -281,7 +281,7 @@ def write_summary(results: list[dict], reports_dir: Path) -> Path:
     # print a nice summary to the console
     log_header("=" * 60)
     log_info(f"SUMMARY  total={total}  passed={green(str(passed))}  failed={red(str(failed))}  skipped={yellow(str(skipped))}")
-    log_info(f"Summary JSON → {summary_path}")
+    log_info(f"Summary JSON -> {summary_path}")
     log_header("=" * 60)
     return summary_path
 
@@ -290,7 +290,7 @@ def write_summary(results: list[dict], reports_dir: Path) -> Path:
 # parse command line arguments
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(
-        description="Locust Orchestrator — run a CSV load-test plan sequentially.",
+        description="Locust Orchestrator - run a CSV load-test plan sequentially.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )
@@ -384,11 +384,11 @@ def main() -> None:
     log_info(f"Starting at   : step {start_at}")
     log_info(f"Reports dir   : {reports_dir.resolve()}")
     log_info(f"Log file      : {_log_file}")
-    log_info(f"Host override : {args.host or '(none — use locustfile default)'}")
+    log_info(f"Host override : {args.host or '(none - use locustfile default)'}")
     log_info(f"Cooldown      : {args.cooldown}s between steps")
     log_info(f"Stop on fail  : {args.stop_on_failure}")
     log_info(f"Dry run       : {args.dry_run}")
-    log_info(f"Extra → locust: {' '.join(args.extra) if args.extra else '(none)'}")
+    log_info(f"Extra -> locust: {' '.join(args.extra) if args.extra else '(none)'}")
     log_header("=" * 60)
 
     # check if locust is installed (skip if dry run)
@@ -438,7 +438,7 @@ def main() -> None:
 
             # if we should stop on failure and this step failed, break out
             if args.stop_on_failure and result["status"] == "failed":
-                log_error(f"--stop-on-failure set — aborting after step {abs_index}.")
+                log_error(f"--stop-on-failure set - aborting after step {abs_index}.")
                 break
 
             # wait a bit before next step (unless it's the last one)
