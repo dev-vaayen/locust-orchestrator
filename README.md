@@ -47,10 +47,13 @@ users,spawn_rate,duration,description,tags
 
 ## Usage
 
+After the creation of your test-plan, you're pretty much good to go:
 ```
-locust-orchestrator --plan plan.csv
+locust_orchestrator --plan plan.csv -f locust.py --reports-dir ./results --host http://localhost:8919 --processes -1 
+```
 
-Flags
+Command flags:
+```
 --plan FILE            Path to CSV plan (default: plan.csv)
 --reports-dir DIR      Output directory for reports
 --host URL             Override host for all runs
