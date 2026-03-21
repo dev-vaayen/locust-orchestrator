@@ -7,9 +7,11 @@
 
 A simple python based orchestrator for Locust that allows you to input an exhaustive load-test plan and executes it sequentially one by one, while saving all of the reports in your machine, locally.
 
-I have made this to solve a real practical problem that I have been facing a lot as of late, where I found that all I had been doing was: Inputting the test-config, Executing it, Saving reports and repeat until all Load-Tests had been performed, since Locust currently only allows us to execute these load-tests one-by-one. 
+## Storytime
 
-With this orchestrator however, I can now let it run in the background until all of my test-plans have been exhausted and reports have been saved for review. You can use it just like Locust and pass all those arguments that you're already familiar with since this tool is also executing locust as a process, under the hood.
+I’ve been occupied with a lot of work lately and while using Locust, I kept thinking how cool it would be if I could just maybe input a CSV file with things like concurrent users, ramp-up and duration because till then, I had to input all of these one by one after each Test's completion.
+
+To combat this, now I make use of this orchestrator to execute all of my test-plans in the background and let the reports get been saved for a later reviews. You can use it just like Locust and pass all those arguments that you're already familiar with since this tool is also executing locust as a process, under the hood.
 
 ---
 
