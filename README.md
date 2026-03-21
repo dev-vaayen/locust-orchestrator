@@ -22,16 +22,6 @@ To combat this, now I make use of this orchestrator to execute all of my test-pl
 
 ---
 
-## Installation
-
-```
-pip install locust-orchestrator
-```
-
-Or you can just execute the compiled executable file using the good old `./locust-orchestrator --plan plan.csv` method, as well. 
-
----
-
 ## Example CSV (plan.csv)
 
 ```
@@ -47,7 +37,7 @@ users,spawn_rate,duration,description,tags
 
 After the creation of your test-plan, you're pretty much good to go:
 ```
-locust_orchestrator --plan plan.csv -f locust.py --reports-dir ./results --host http://localhost:8919 --processes -1 
+python3 locust_orchestrator --plan plan.csv -f locust.py --reports-dir ./results --host http://localhost:8919 --processes -1 
 ```
 
 Command flags:
@@ -87,4 +77,6 @@ For the next versions, I intend on implementing these functionalities:
 - Combined report dashboard
 - SQLite history tracking
 - Streamlit visualization
+- Installation using pip
 ---
+
