@@ -7,7 +7,7 @@ A simple python based orchestrator for Locust that allows you to input an exhaus
 
 ## Storytime
 
-I’ve been occupied with a lot of work lately and while using Locust, I kept thinking how cool it would be if I could just maybe input a CSV file with things like concurrent users, ramp-up and duration because till then, I had to input all of these one by one after each Test's completion.
+While using Locust, I kept thinking how cool it would be if I could just maybe input a CSV file with things like concurrent users, ramp-up and duration because till then, I had to input all of these one by one after each Load-Test's completion.
 
 To combat this, now I make use of this orchestrator to execute all of my test-plans in the background and let the reports get been saved for a later reviews. You can use it just like Locust and pass all those arguments that you're already familiar with since this tool is also executing locust as a process, under the hood.
 
